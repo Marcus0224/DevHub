@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Marcus0224/DevHub/issues"
   },
-  "homepage": "https://github.com/Marcus0224/DevHub#readme"
+  "homepage": "https://github.com/Marcus0224/DevHub#readme",
+  "dependencies": {
+    "react-scripts": "^5.0.1"
+  }
 }
