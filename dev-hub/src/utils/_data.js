@@ -1,0 +1,32 @@
+export const cartData = [
+    {
+      id: '1',
+      price: 15800.00,
+      currency: 'USD',
+      name: 'News Site',
+      description: "There's nothing fake about this site!",
+      quantity: 3,
+      imageUrl:
+        'https://i.dailymail.co.uk/i/pix/2014/12/18/24258DAD00000578-0-image-a-55_1418922050147.jpg?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80',
+    },
+    {
+      id: '2',
+      price: 50000.00,
+      currency: 'USD',
+      name: 'Ecommerce Site',
+      description: 'This site will take you out of this world!',
+      quantity: 3,
+      imageUrl:
+        'https://cdn.vox-cdn.com/thumbor/46aXsGGkRgC4zT9zL5_E5s4FGEU=/0x0:1010x673/1200x800/filters:focal(0x0:1010x673)/cdn.vox-cdn.com/uploads/chorus_image/image/45176182/Screen_Shot_2015-01-07_at_11.05.22_PM.0.0.png?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80',
+    },
+    {
+      id: '3',
+      price: 125000,
+      currency: 'USD',
+      name: 'Social Media Site',
+      description: 'Built so good, Elon Musk will want to buy it!  ',
+      quantity: 3,
+      imageUrl:
+        'https://cdn.cms-twdigitalassets.com/content/dam/developer-twitter/docs/tweet-like-intent.jpg?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80',
+    },
+  ]

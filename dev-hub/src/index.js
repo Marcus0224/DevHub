@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import { ChakraProvider } from '@chakra-ui/react'
 import {NavBar} from './components/Navbar';
 import { Footer } from './components/Footer';
+import { Cart } from './components/Cart';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
@@ -16,7 +17,7 @@ root.render(
 
   <StrictMode>
     <ColorModeScript />
-    <Footer />
+    <Cart />
   </StrictMode>
 
   </ChakraProvider>
