@@ -1,0 +1,23 @@
+{
+  "name": "devhub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marcus0224/DevHub.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marcus0224/DevHub/issues"
+  },
+  "homepage": "https://github.com/Marcus0224/DevHub#readme",
+  "dependencies": {
+    "react-scripts": "^5.0.1"
+  }
+}
