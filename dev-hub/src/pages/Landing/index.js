@@ -1,15 +1,15 @@
 import React from 'react';
-import { Button, Flex, Text, Container, Box } from '@chakra-ui/react';
+import { Button, Box, Flex, Text, Center } from '@chakra-ui/react';
 
 const Landing = () => {
     return (
         <section>
-            <Container maxW='80%' bg='lightgrey' height='xl' margin='auto'>
-                <Flex w='60%' height='50%' bg='white' flexWrap='wrap' margin='auto' justify='center' borderRadius='20'>
+            <Center maxW='80%' bg='lightgrey' height='xl' margin='auto'>
+                <Box w='60%' height='50%' bg='white' borderRadius='20'>
+                    <Flex flexWrap='wrap' justifyContent='center' flexDirection='column' alignContent='center' alignItems='center'>
                     <Text 
                         fontWeight='bold'
                         fontSize='xxx-large'
-                        margin='auto'
                         >
                         See what we can create for you
                     </Text>
@@ -20,8 +20,9 @@ const Landing = () => {
                         >
                         See our templates
                     </Button>
-                </Flex>
-            </Container>
+                    </Flex>
+                </Box>
+            </Center>
         </section>
     );
 }
