@@ -8,6 +8,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import {NavBar} from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Cart } from './components/Cart';
+import { Login } from './components/Login';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
@@ -17,7 +18,7 @@ root.render(
 
   <StrictMode>
     <ColorModeScript />
-    <Cart />
+    <Login />
   </StrictMode>
 
   </ChakraProvider>
