@@ -13,11 +13,12 @@ import {
   import { FiMenu } from 'react-icons/fi'
   import { Logo } from '../Footer/Logo'
   
-  export const NavBar = () => {
+  export const NavBar = ({handleCategoryChange}) => {
     const isDesktop = useBreakpointValue({
       base: false,
       lg: true,
-    })
+    });
+
     return (
       <Box
         as="section"
@@ -39,12 +40,12 @@ import {
                 <Flex justify="space-between" flex="1">
                   <ButtonGroup variant="link" spacing="8">
                     {['Catalog', 'Cart'].map((item) => (
-                      <Button key={item}>{item}</Button>
+                      <Button key={item} onClick={handleCategoryChange}>{item}</Button>
                     ))}
                   </ButtonGroup>
                   <HStack spacing="3">
-                    <Button variant="ghost">Sign in</Button>
-                    <Button variant="primary">Sign up</Button>
+                    <Button variant="ghost" onClick={handleCategoryChange}>Sign in</Button>
+                    <Button variant="primary" onClick={handleCategoryChange}>Sign up</Button>
                   </HStack>
                 </Flex>
               ) : (
