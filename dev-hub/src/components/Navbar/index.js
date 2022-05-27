@@ -1,19 +1,62 @@
-import { Flex, Spacer, Button, 
-ButtonGroup, Heading, Box } from '@chakra-ui/react'
-
-
-
-const NavBar = () => (
-    <Flex minWidth='max-content' alignItems='center' gap='2'>
-  <Box p='2'>
-    <Heading size='md'>DevHub</Heading>
-  </Box>
-  <Spacer />
-  <ButtonGroup gap='2'>
-    <Button colorScheme='teal'>Sign Up</Button>
-    <Button colorScheme='teal'>Log in</Button>
-  </ButtonGroup>
-</Flex>
-)
-
-export default NavBar
+import {
+    Box,
+    Button,
+    ButtonGroup,
+    Container,
+    Flex,
+    HStack,
+    IconButton,
+    useBreakpointValue,
+    useColorModeValue,
+  } from '@chakra-ui/react'
+  import * as React from 'react'
+  import { FiMenu } from 'react-icons/fi'
+  import { Logo } from '../Footer/Logo'
+  
+  export const NavBar = () => {
+    const isDesktop = useBreakpointValue({
+      base: false,
+      lg: true,
+    })
+    return (
+      <Box
+        as="section"
+        pb={{
+          base: '12',
+          md: '24',
+        }}
+      >
+        <Box as="nav" bg="bg-surface" boxShadow={useColorModeValue('sm', 'sm-dark')}>
+          <Container
+            py={{
+              base: '4',
+              lg: '5',
+            }}
+          >
+            <HStack spacing="10" justify="space-between">
+              <Logo />
+              {isDesktop ? (
+                <Flex justify="space-between" flex="1">
+                  <ButtonGroup variant="link" spacing="8">
+                    {['Catalog', 'Cart'].map((item) => (
+                      <Button key={item}>{item}</Button>
+                    ))}
+                  </ButtonGroup>
+                  <HStack spacing="3">
+                    <Button variant="ghost">Sign in</Button>
+                    <Button variant="primary">Sign up</Button>
+                  </HStack>
+                </Flex>
+              ) : (
+                <IconButton
+                  variant="ghost"
+                  icon={<FiMenu fontSize="1.25rem" />}
+                  aria-label="Open Menu"
+                />
+              )}
+            </HStack>
+          </Container>
+        </Box>
+      </Box>
+    )
+  }
