@@ -3,7 +3,6 @@ import {
     Flex,
     Heading,
     HStack,
-    Link,
     Stack,
     useColorModeValue as mode,
   } from '@chakra-ui/react'
@@ -11,6 +10,7 @@ import {
   import { CartItem } from './CartItem'
   import { CartOrderSummary } from './CartOrderSummary'
   import { cartData } from '../../utils/_data'
+  import { Link } from 'react-router-dom'
   
   export const Cart = () => (
     <Box
@@ -65,7 +65,7 @@ import {
           <CartOrderSummary />
           <HStack mt="6" fontWeight="semibold">
             <p>or</p>
-            <Link color={mode('blue.500', 'blue.200')}>Continue shopping</Link>
+            <Link color={mode('blue.500', 'blue.200')} to='/catalog'>Continue shopping</Link>
           </HStack>
         </Flex>
       </Stack>
