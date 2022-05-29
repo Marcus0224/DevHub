@@ -6,13 +6,29 @@ import {
     Stack,
     useColorModeValue as mode,
   } from '@chakra-ui/react'
-  import * as React from 'react'
+  import React, { useState } from 'react'
   import { CartItem } from './CartItem'
   import { CartOrderSummary } from './CartOrderSummary'
   import { cartData } from '../../utils/_data'
   import { Link } from 'react-router-dom'
   
-  export const Cart = () => (
+function Cart () {
+  const [totalPrice, setTotalPrice] = useState(cartData.map(item => item.price*item.quantity).reduce((prev, curr) => prev + curr, 0));
+
+  const onClickDelete = (event) => {
+
+  }
+
+  const updateQuantity = (itemToUpdate, amount) => {
+    cartData.map(item => {
+      if (item === itemToUpdate) {
+        return item.quantity = amount;
+      }
+    });
+    setTotalPrice(cartData.map(item => item.price*item.quantity).reduce((prev, curr) => prev + curr, 0));
+  }
+
+  return (
     <Box
       maxW={{
         base: '3xl',
@@ -51,18 +67,18 @@ import {
           flex="2"
         >
           <Heading fontSize="2xl" fontWeight="extrabold">
-            Shopping Cart (3 items)
+            Shopping Cart ({cartData.length} items)
           </Heading>
   
           <Stack spacing="6">
             {cartData.map((item) => (
-              <CartItem key={item.id} {...item} />
+              <CartItem key={item.id} item={item} updateQuantity={updateQuantity} />
             ))}
           </Stack>
         </Stack>
   
         <Flex direction="column" align="center" flex="1">
-          <CartOrderSummary />
+          <CartOrderSummary totalPrice={totalPrice}/>
           <HStack mt="6" fontWeight="semibold">
             <p>or</p>
             <Link color={mode('blue.500', 'blue.200')} to='/catalog'>Continue shopping</Link>
@@ -71,3 +87,6 @@ import {
       </Stack>
     </Box>
   )
+}
+
+export default Cart;
