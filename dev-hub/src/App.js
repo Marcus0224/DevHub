@@ -12,6 +12,7 @@ import { NavBar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import Cart from './components/Cart';
 import { Login } from './components/Login';
+import { Catalog } from './pages/Catalog';
 
 const httpLink = createHttpLink({
   uri: '/graphql',

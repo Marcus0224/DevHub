@@ -25,17 +25,17 @@ import {
         as="section"
         pb={{
           base: '12',
-          md: '24',
+         
         }}
       >
         <Box as="nav" bg="bg-surface" boxShadow={useColorModeValue('sm', 'sm-dark')}>
           <Container
             py={{
               base: '4',
-              lg: '5',
+              lg: '8',
             }}
           >
-            <HStack spacing="10" justify="space-between">
+            <HStack spacing="30" justify="space-around">
               <Logo />
               {/* {isDesktop ? ( */}
                 <Flex justify="space-between" flex="1">
