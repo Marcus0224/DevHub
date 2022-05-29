@@ -44,8 +44,8 @@ import {
             name="password"
             type={isOpen ? 'text' : 'password'}
             autoComplete="current-password"
+            placeholder='*******'
             required
-            {...props}
           />
         </InputGroup>
       </FormControl>

@@ -13,14 +13,50 @@ import {
     Text,
     useBreakpointValue,
     useColorModeValue,
-    Image
+    Image,
+    Center
   } from '@chakra-ui/react'
-  import * as React from 'react'
+  import React, { useState } from 'react'
+  import { useMutation } from '@apollo/client'
 import { Link } from 'react-router-dom'
   // import { Logo } from '../../assets/images/DevHub_logos_black.png'
   import { PasswordField } from './PasswordField'
+  import { LOGIN_USER } from '../../utils/mutations'
+  import Auth from '../../utils/auth';
+
+  export const Login = () => {
+    const [formState, setFormState] = useState({ email: '', password: '' });
+    const [login, { error }] = useMutation(LOGIN_USER);
   
-  export const Login = () => (
+    // update state based on form input changes
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+
+      setFormState({
+        ...formState,
+        [name]: value,
+      });
+    };
+
+    const handleFormSubmit = async (event) => {
+      event.preventDefault();
+      console.log(formState);
+      try {
+        const { data } = await login({
+          variables: { ...formState }
+        });
+        Auth.login(data.login.token);
+      } catch (e) {
+        console.error(e);
+      }
+      // clear form values
+      setFormState({
+        email: '',
+        password: '',
+      });
+    }
+
+    return (
     <Container
       maxW="lg"
       py={{
@@ -34,7 +70,7 @@ import { Link } from 'react-router-dom'
     >
       <Stack spacing="8">
         <Stack spacing="6">
-          <Image src='../../assets/images/DevHub_logos_black.png' alt='logo' />
+          {/* Put logo here */}
           <Stack
             spacing={{
               base: '2',
@@ -80,11 +116,20 @@ import { Link } from 'react-router-dom'
             sm: 'xl',
           }}
         >
+          {error && (
+            <Center
+              bg='red.100'
+              p='5px'
+              borderRadius='25px'
+              marginBottom='5px'>
+              Invalid username or password! Please try again.
+            </Center>
+          )}
           <Stack spacing="6">
             <Stack spacing="5">
-              <FormControl>
+              <FormControl onSubmit={handleFormSubmit}>
                 <FormLabel htmlFor="email">Email</FormLabel>
-                <Input id="email" type="email" />
+                <Input id="email" type="email" placeholder='Your email' onChange={handleChange} />
               </FormControl>
               <PasswordField />
             </Stack>
@@ -95,7 +140,7 @@ import { Link } from 'react-router-dom'
               </Button>
             </HStack>
             <Stack spacing="6">
-              <Button variant="primary">Sign in</Button>
+              <Button variant="primary" onClick={handleFormSubmit}>Sign in</Button>
               <HStack>
                 <Divider />
                 <Text fontSize="sm" whiteSpace="nowrap" color="muted">
@@ -108,4 +153,5 @@ import { Link } from 'react-router-dom'
         </Box>
       </Stack>
     </Container>
-  )
+    );
+  }
