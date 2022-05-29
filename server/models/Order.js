@@ -15,11 +15,11 @@ const orderSchema = new Schema(
       maxLength: 50
     },
     needByDate: {
-      type: Date,
+      type: String,
       default: Date.now
     },
     price: {
-      type: Number,
+      type: String,
     },
     comments: {
       type: String,
@@ -29,6 +29,10 @@ const orderSchema = new Schema(
       type: Date,
       default: Date.now,
       get: timestamp => dateFormat(timestamp)
+    },
+    username: {
+      type: String,
+      required: true
     }
   },
   {

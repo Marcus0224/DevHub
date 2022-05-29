@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const dateFormat = require('../utils/dateFormat');
+const bcrypt = require("bcrypt")
 
 const userSchema = new Schema(
   {
@@ -23,7 +24,7 @@ const userSchema = new Schema(
     orders: [
       {
         type: Schema.Types.ObjectId,
-        ref: "OrderNumber"
+        ref: "Order"
       }
     ]
   },
