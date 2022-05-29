@@ -15,10 +15,6 @@ import {
 function Cart () {
   const [totalPrice, setTotalPrice] = useState(cartData.map(item => item.price*item.quantity).reduce((prev, curr) => prev + curr, 0));
 
-  const onClickDelete = (event) => {
-
-  }
-
   const updateQuantity = (itemToUpdate, amount) => {
     cartData.map(item => {
       if (item === itemToUpdate) {

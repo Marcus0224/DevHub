@@ -11,7 +11,7 @@ import {
   } from '@chakra-ui/react'
   import * as React from 'react'
   import { FiMenu } from 'react-icons/fi'
-import { Navigate, Link } from 'react-router-dom'
+  import { Link } from 'react-router-dom'
   import { Logo } from '../Footer/Logo'
   
   export const NavBar = () => {
@@ -19,10 +19,6 @@ import { Navigate, Link } from 'react-router-dom'
       base: false,
       lg: true,
     });
-
-    const handleClick = (event) => {
-      return <Navigate to={`/${event.target.textContent.toLowerCase()}`} />
-    }
 
     return (
       <Box
@@ -52,7 +48,7 @@ import { Navigate, Link } from 'react-router-dom'
                   </ButtonGroup>
                   <HStack spacing="3">
                     <Button variant="ghost">
-                      <Link to={`/signin`}>Sign in</Link>
+                      <Link to={`/login`}>Sign in</Link>
                     </Button>
                     <Button variant="primary">
                       <Link to={`/signup`}>Sign up</Link>

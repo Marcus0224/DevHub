@@ -15,6 +15,7 @@ import {
     useColorModeValue,
   } from '@chakra-ui/react'
   import * as React from 'react'
+import { Link } from 'react-router-dom'
   import { Logo } from '../../assets/images/DevHub_logos_black.png'
   import { PasswordField } from './PasswordField'
   
@@ -32,7 +33,7 @@ import {
     >
       <Stack spacing="8">
         <Stack spacing="6">
-          <Logo />
+          {/* <Logo /> */}
           <Stack
             spacing={{
               base: '2',
@@ -51,7 +52,7 @@ import {
             <HStack spacing="1" justify="center">
               <Text color="muted">Don't have an account?</Text>
               <Button variant="link" colorScheme="blue">
-                Sign up
+                <Link to='/signup'>Sign up</Link>
               </Button>
             </HStack>
           </Stack>
