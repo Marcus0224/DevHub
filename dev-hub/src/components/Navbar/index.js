@@ -37,7 +37,7 @@ import {
           >
             <HStack spacing="10" justify="space-between">
               <Logo />
-              {isDesktop ? (
+              {/* {isDesktop ? ( */}
                 <Flex justify="space-between" flex="1">
                   <ButtonGroup variant="link" spacing="8">
                     {['Catalog', 'Cart'].map((item) => (
@@ -55,13 +55,13 @@ import {
                     </Button>
                   </HStack>
                 </Flex>
-              ) : (
-                <IconButton
+              {/* ) : ( */}
+                {/* <IconButton
                   variant="ghost"
                   icon={<FiMenu fontSize="1.25rem" />}
                   aria-label="Open Menu"
-                />
-              )}
+                /> */}
+              {/* )} */}
             </HStack>
           </Container>
         </Box>

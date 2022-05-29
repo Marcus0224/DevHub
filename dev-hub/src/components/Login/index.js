@@ -13,10 +13,11 @@ import {
     Text,
     useBreakpointValue,
     useColorModeValue,
+    Image
   } from '@chakra-ui/react'
   import * as React from 'react'
 import { Link } from 'react-router-dom'
-  import { Logo } from '../../assets/images/DevHub_logos_black.png'
+  // import { Logo } from '../../assets/images/DevHub_logos_black.png'
   import { PasswordField } from './PasswordField'
   
   export const Login = () => (
@@ -33,7 +34,7 @@ import { Link } from 'react-router-dom'
     >
       <Stack spacing="8">
         <Stack spacing="6">
-          {/* <Logo /> */}
+          <Image src='../../assets/images/DevHub_logos_black.png' alt='logo' />
           <Stack
             spacing={{
               base: '2',

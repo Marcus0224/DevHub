@@ -7,6 +7,8 @@ const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
+const path = require('path');
+
 const PORT = process.env.PORT || 3001;
 // create a new Apollo server and pass in our schema data
 const server = new ApolloServer({
@@ -25,6 +27,15 @@ const startApolloServer = async (typeDefs, resolvers) => {
 await server.start();
 // integrate our Apollo server with the Express application as middleware
 server.applyMiddleware({ app });
+
+// if in production, use the build folder for static assets
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+}
+// catch any wildcard routes and direct to index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 db.once('open', () => {
     app.listen(PORT, () => {
