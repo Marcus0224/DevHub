@@ -5,10 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 import { ChakraProvider } from '@chakra-ui/react'
-import {NavBar} from './components/Navbar';
-import { Footer } from './components/Footer';
-import { Cart } from './components/Cart';
-import { Login } from './components/Login';
+import { CatalogItem } from './components/CatalogItem';
+import { Catalog } from './pages/Catalog';
+
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
@@ -18,7 +17,7 @@ root.render(
 
   <StrictMode>
     <ColorModeScript />
-    <Login />
+    <App/>
   </StrictMode>
 
   </ChakraProvider>

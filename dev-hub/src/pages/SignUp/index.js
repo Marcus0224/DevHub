@@ -1,7 +1,6 @@
 import {
     Box,
     Button,
-    Checkbox,
     Container,
     Divider,
     FormControl,
@@ -10,15 +9,14 @@ import {
     HStack,
     Input,
     Stack,
-    Text,
     useBreakpointValue,
     useColorModeValue,
   } from '@chakra-ui/react'
   import * as React from 'react'
-  import { Logo } from '../../assets/images/DevHub_logos_black.png'
+  import { Logo } from './Logo'
   import { PasswordField } from './PasswordField'
   
-  export const Login = () => (
+  export const SignUp = () => (
     <Container
       maxW="lg"
       py={{
@@ -30,7 +28,7 @@ import {
         sm: '8',
       }}
     >
-      <Stack spacing="8">
+      <Stack spacing="1">
         <Stack spacing="6">
           <Logo />
           <Stack
@@ -46,14 +44,9 @@ import {
                 md: 'sm',
               })}
             >
-              Log in to your account
+              Sign up to access our catalog
             </Heading>
-            <HStack spacing="1" justify="center">
-              <Text color="muted">Don't have an account?</Text>
-              <Button variant="link" colorScheme="blue">
-                Sign up
-              </Button>
-            </HStack>
+           
           </Stack>
         </Stack>
         <Box
@@ -87,18 +80,11 @@ import {
               <PasswordField />
             </Stack>
             <HStack justify="space-between">
-              <Checkbox defaultChecked>Remember me</Checkbox>
-              <Button variant="link" colorScheme="blue" size="sm">
-                Forgot password?
-              </Button>
             </HStack>
             <Stack spacing="6">
-              <Button variant="primary">Sign in</Button>
+              <Button variant="primary">Sign up</Button>
               <HStack>
                 <Divider />
-                <Text fontSize="sm" whiteSpace="nowrap" color="muted">
-                  or continue with
-                </Text>
                 <Divider />
               </HStack>
             </Stack>

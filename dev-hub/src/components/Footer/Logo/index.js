@@ -1,10 +1,10 @@
-import { chakra } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import DevHub_logos_black from '../../../assets/images/DevHub_logos_black.png'
 
 export const Logo = () => (
-<div>
-    <img src={DevHub_logos_black}>
+<Box>
+    <img src={DevHub_logos_black} alt= 'logo'>
     </img>
-</div>
+</Box>
   
 )
