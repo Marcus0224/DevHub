@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Box, Flex, Text, Center } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 const Landing = () => {
     return (
@@ -18,7 +19,7 @@ const Landing = () => {
                         colorScheme='teal'
                         variant='solid'
                         >
-                        See our templates
+                        <Link to='/catalog'>See our templates</Link>
                     </Button>
                     </Flex>
                 </Box>
