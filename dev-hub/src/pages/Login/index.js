@@ -1,61 +1,60 @@
 import {
-    Box,
-    Button,
-    Container,
-    Divider,
-    FormControl,
-    FormLabel,
-    Heading,
-    HStack,
-    Input,
-    Stack,
-    Text,
-    useBreakpointValue,
-    useColorModeValue,
-    Image,
-    Center
-  } from '@chakra-ui/react'
-  import React, { useState } from 'react'
-  import { useMutation } from '@apollo/client'
-import { Link } from 'react-router-dom'
-  // import { Logo } from '../../assets/images/DevHub_logos_black.png'
-  import { PasswordField } from './PasswordField'
-  import { LOGIN_USER } from '../../utils/mutations'
-  import Auth from '../../utils/auth';
+  Box,
+  Button,
+  Container,
+  Divider,
+  FormControl,
+  FormLabel,
+  Heading,
+  HStack,
+  Input,
+  Stack,
+  Text,
+  useBreakpointValue,
+  useColorModeValue,
+  Center,
+} from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
+import { Logo } from './Logo';
+import { PasswordField } from './PasswordField';
+import { LOGIN_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
-  export const Login = () => {
-    const [formState, setFormState] = useState({ email: '', password: '' });
-    const [login, { error }] = useMutation(LOGIN_USER);
-  
-    // update state based on form input changes
-    const handleChange = (event) => {
-      const { name, value } = event.target;
+export const Login = () => {
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error }] = useMutation(LOGIN_USER);
 
-      setFormState({
-        ...formState,
-        [name]: value,
+  // update state based on form input changes
+  const handleChange = event => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const handleFormSubmit = async event => {
+    event.preventDefault();
+    console.log(formState);
+    try {
+      const { data } = await login({
+        variables: { ...formState },
       });
-    };
-
-    const handleFormSubmit = async (event) => {
-      event.preventDefault();
-      console.log(formState);
-      try {
-        const { data } = await login({
-          variables: { ...formState }
-        });
-        Auth.login(data.login.token);
-      } catch (e) {
-        console.error(e);
-      }
-      // clear form values
-      setFormState({
-        email: '',
-        password: '',
-      });
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
     }
+    // clear form values
+    setFormState({
+      email: '',
+      password: '',
+    });
+  };
 
-    return (
+  return (
     <Container
       maxW="lg"
       py={{
@@ -69,7 +68,7 @@ import { Link } from 'react-router-dom'
     >
       <Stack spacing="8">
         <Stack spacing="6">
-          {/* Put logo here */}
+          <Logo />
           <Stack
             spacing={{
               base: '2',
@@ -88,7 +87,7 @@ import { Link } from 'react-router-dom'
             <HStack spacing="1" justify="center">
               <Text color="muted">Don't have an account?</Text>
               <Button variant="link" colorScheme="blue">
-                <Link to='/signup'>Sign up</Link>
+                <Link to="/signup">Sign up</Link>
               </Button>
             </HStack>
           </Stack>
@@ -116,11 +115,7 @@ import { Link } from 'react-router-dom'
           }}
         >
           {error && (
-            <Center
-              bg='red.100'
-              p='5px'
-              borderRadius='25px'
-              marginBottom='5px'>
+            <Center bg="red.100" p="5px" borderRadius="25px" marginBottom="5px">
               Invalid username or password! Please try again.
             </Center>
           )}
@@ -128,14 +123,25 @@ import { Link } from 'react-router-dom'
             <Stack spacing="5">
               <FormControl onSubmit={handleFormSubmit}>
                 <FormLabel htmlFor="email">Email</FormLabel>
-                <Input id="email" type="email" placeholder='Your email' onChange={handleChange} />
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                  placeholder="Your email"
+                />
               </FormControl>
-              <PasswordField />
+              <PasswordField
+                onChange={handleChange}
+                value={formState.password}
+              />
             </Stack>
-            <HStack justify="space-between">
-            </HStack>
+            <HStack justify="space-between"></HStack>
             <Stack spacing="6">
-              <Button variant="primary" onClick={handleFormSubmit}>Sign in</Button>
+              <Button variant="primary" onClick={handleFormSubmit}>
+                Sign in
+              </Button>
               <HStack>
                 <Divider />
                 <Divider />
@@ -145,5 +151,5 @@ import { Link } from 'react-router-dom'
         </Box>
       </Stack>
     </Container>
-    );
-  }
+  );
+};

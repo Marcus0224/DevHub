@@ -1,5 +1,4 @@
 import {
-    FormControl,
     FormLabel,
     IconButton,
     Input,
@@ -8,10 +7,10 @@ import {
     useDisclosure,
     useMergeRefs,
   } from '@chakra-ui/react'
-  import * as React from 'react'
+  import React from 'react'
   import { HiEye, HiEyeOff } from 'react-icons/hi'
   
-  export const PasswordField = React.forwardRef((props, ref) => {
+  export const PasswordField = React.forwardRef(({ onChange, value }, ref) => {
     const { isOpen, onToggle } = useDisclosure()
     const inputRef = React.useRef(null)
     const mergeRef = useMergeRefs(inputRef, ref)
@@ -27,7 +26,7 @@ import {
     }
   
     return (
-      <FormControl>
+      <>
         <FormLabel htmlFor="password">Password</FormLabel>
         <InputGroup>
           <InputRightElement>
@@ -42,13 +41,15 @@ import {
             id="password"
             ref={mergeRef}
             name="password"
+            value={value}
+            onChange={onChange}
+            placeholder='*******'
             type={isOpen ? 'text' : 'password'}
             autoComplete="current-password"
             required
-            {...props}
           />
         </InputGroup>
-      </FormControl>
+      </>
     )
   })
   PasswordField.displayName = 'PasswordField'

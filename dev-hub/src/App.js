@@ -13,6 +13,7 @@ import { Footer } from './components/Footer';
 import Cart from './/pages/Cart';
 import { Login } from './pages/Login';
 import { Catalog } from './pages/Catalog'
+import { SignUp } from './pages/SignUp';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -33,6 +34,8 @@ function App() {
             <Route path="/" element={<Landing />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
+            <Route path='/signup' element={<SignUp />} />
+            <Route path='/catalog' element={<Catalog />} />
           </Routes>
           <Footer />
         </div>
