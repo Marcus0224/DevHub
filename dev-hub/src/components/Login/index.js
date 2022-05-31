@@ -15,7 +15,7 @@ import {
     useColorModeValue,
   } from '@chakra-ui/react'
   import * as React from 'react'
-  import { Logo } from '../../assets/images/DevHub_logos_black.png'
+  //import { Logo } from '../../assets/images/DevHub_logos_black.png'
   import { PasswordField } from './PasswordField'
   
   export const Login = () => (
@@ -32,7 +32,7 @@ import {
     >
       <Stack spacing="8">
         <Stack spacing="6">
-          <Logo />
+          {/* <Logo /> */}
           <Stack
             spacing={{
               base: '2',

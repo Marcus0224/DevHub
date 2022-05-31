@@ -11,7 +11,7 @@ import {
   } from '@chakra-ui/react'
   import * as React from 'react'
   import { FiMenu } from 'react-icons/fi'
-  import { Logo } from '../Footer/Logo'
+  //import { Logo } from '../Footer/Logo'
   
   export const NavBar = () => {
     const isDesktop = useBreakpointValue({
@@ -34,7 +34,7 @@ import {
             }}
           >
             <HStack spacing="10" justify="space-between">
-              <Logo />
+              {/* <Logo /> */}
               {isDesktop ? (
                 <Flex justify="space-between" flex="1">
                   <ButtonGroup variant="link" spacing="8">
