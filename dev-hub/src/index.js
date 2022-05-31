@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 import { ChakraProvider } from '@chakra-ui/react'
-import {NavBar} from './components/Navbar';
+import { NavBar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Cart } from './components/Cart';
 import { Login } from './components/Login';
