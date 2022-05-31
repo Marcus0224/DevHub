@@ -5,6 +5,7 @@ import {
     HStack,
     Icon,
     Input,
+    Link,
     Stack,
     Text,
     useColorModeValue,
@@ -57,7 +58,7 @@ import {
       </Stack>
       <Stack spacing="8">
         <Button colorScheme="blue" size="lg" py="7">
-          Place Order
+          <Link to='/checkout'>Place Order</Link>
         </Button>
         <Stack spacing="3">
           <Text fontSize="sm" color={useColorModeValue('gray.700', 'gray.200')}>

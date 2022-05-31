@@ -1,7 +1,7 @@
 import { ButtonGroup, Container, IconButton, Stack, Text } from '@chakra-ui/react'
 import * as React from 'react'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
-import { Logo } from './Logo'
+//import { Logo } from './Logo'
 
 export const Footer = () => (
   <Container
@@ -19,7 +19,7 @@ export const Footer = () => (
       }}
     >
       <Stack justify="space-between" direction="row" align="center">
-        <Logo />
+        {/* <Logo /> */}
         <ButtonGroup variant="ghost">
           <IconButton
             as="a"
