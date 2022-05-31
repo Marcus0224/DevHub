@@ -30,8 +30,8 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
-    orders: [Order]
-    order(orderTitle: String!): Order
+    orders(username: String!): [Order]
+    order(_id: ID!): Order
   },
 
   type Mutation {

@@ -2,7 +2,7 @@
   "name": "dev-hub",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@apollo/client": "^3.6.5",
     "@chakra-ui/react": "^2.1.2",
@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^14.2.0",
     "framer-motion": "^6.3.4",
     "graphql": "^16.5.0",
+    "jwt-decode": "^3.1.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-icons": "^3.11.0",

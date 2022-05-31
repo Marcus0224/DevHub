@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 import { ChakraProvider } from '@chakra-ui/react'
+import { Checkout } from './pages/Checkout';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
@@ -14,7 +15,7 @@ root.render(
 
   <StrictMode>
     <ColorModeScript />
-    <App />
+    <Checkout />
   </StrictMode>
 
   </ChakraProvider>

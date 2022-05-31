@@ -13,12 +13,19 @@ import {
   import { FiMenu } from 'react-icons/fi'
   import { Link } from 'react-router-dom'
   import { Logo } from '../Footer/Logo'
+
+  import Auth from '../../utils/auth'
   
   export const NavBar = () => {
     const isDesktop = useBreakpointValue({
       base: false,
       lg: true,
     });
+
+    const logout = event => {
+      event.preventDefault();
+      Auth.logout();
+    }
 
     return (
       <Box
@@ -37,7 +44,7 @@ import {
           >
             <HStack spacing="30" justify="space-around">
               <Logo />
-              {isDesktop ? (
+              {/* {isDesktop ? ( */}
                 <Flex justify="space-between" flex="1">
                   <ButtonGroup variant="link" spacing="8">
                     {['Catalog', 'Cart'].map((item) => (
@@ -46,7 +53,17 @@ import {
                       </Button>
                     ))}
                   </ButtonGroup>
+                  {Auth.loggedIn() ? (
                   <HStack spacing="3">
+                    <Button variant="ghost">
+                      <Link to={`/dashboard`}>Dashboard</Link>
+                    </Button>
+                    <Button variant="primary">
+                      <Link to={`/`} onClick={logout}>Log out</Link>
+                    </Button>
+                  </HStack>
+                  ) : (
+                    <HStack spacing="3">
                     <Button variant="ghost">
                       <Link to={`/login`}>Sign in</Link>
                     </Button>
@@ -54,14 +71,15 @@ import {
                       <Link to={`/signup`}>Sign up</Link>
                     </Button>
                   </HStack>
+                  )}
                 </Flex>
-              ) : (
-                <IconButton
+              {/* ) : ( */}
+                {/* <IconButton
                   variant="ghost"
                   icon={<FiMenu fontSize="1.25rem" />}
                   aria-label="Open Menu"
-                />
-              )}
+                /> */}
+              {/* )} */}
             </HStack>
           </Container>
         </Box>
