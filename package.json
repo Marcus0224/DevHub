@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "watch": "nodemon",
-    "build": "cd dev-hub && npm run build"
+    "build": "cd dev-hub && npm run build",
+    "heroku-postbuild": "cd dev-hub && npm install && npm run build"
+
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,9 @@
   "homepage": "https://github.com/Marcus0224/DevHub#readme",
   "dependencies": {
     "react-scripts": "^5.0.1"
+  },
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
   }
 }
