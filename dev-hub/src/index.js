@@ -5,12 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 import { ChakraProvider } from '@chakra-ui/react'
-<<<<<<< HEAD
-import { CatalogItem } from './components/CatalogItem';
-import { Catalog } from './pages/Catalog';
-
-=======
->>>>>>> ca774c1549095dab28f3216da22439bfacc98968
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
@@ -20,11 +14,7 @@ root.render(
 
   <StrictMode>
     <ColorModeScript />
-<<<<<<< HEAD
-    <App/>
-=======
     <App />
->>>>>>> ca774c1549095dab28f3216da22439bfacc98968
   </StrictMode>
 
   </ChakraProvider>
