@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "proxy": "http://localhost:3001",
   "private": true,
-  "proxy": "http://localhost:3001",
   "dependencies": {
     "@apollo/client": "^3.6.5",
     "@chakra-ui/react": "^2.1.2",
