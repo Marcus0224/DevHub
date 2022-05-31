@@ -1,3 +1,4 @@
+const path = require("path");
 const { authMiddleware } = require('./utils/auth')
 const express = require('express');
 // import ApolloServer
@@ -9,13 +10,12 @@ const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 // create a new Apollo server and pass in our schema data
+const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware
 });
-
-const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
