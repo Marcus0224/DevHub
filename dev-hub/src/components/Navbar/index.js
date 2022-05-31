@@ -13,12 +13,19 @@ import {
   import { FiMenu } from 'react-icons/fi'
   import { Link } from 'react-router-dom'
   import { Logo } from '../Footer/Logo'
+
+  import Auth from '../../utils/auth'
   
   export const NavBar = () => {
     const isDesktop = useBreakpointValue({
       base: false,
       lg: true,
     });
+
+    const logout = event => {
+      event.preventDefault();
+      Auth.logout();
+    }
 
     return (
       <Box
@@ -46,7 +53,17 @@ import {
                       </Button>
                     ))}
                   </ButtonGroup>
+                  {Auth.loggedIn() ? (
                   <HStack spacing="3">
+                    <Button variant="ghost">
+                      <Link to={`/dashboard`}>Dashboard</Link>
+                    </Button>
+                    <Button variant="primary">
+                      <Link to={`/`} onClick={logout}>Log out</Link>
+                    </Button>
+                  </HStack>
+                  ) : (
+                    <HStack spacing="3">
                     <Button variant="ghost">
                       <Link to={`/login`}>Sign in</Link>
                     </Button>
@@ -54,6 +71,7 @@ import {
                       <Link to={`/signup`}>Sign up</Link>
                     </Button>
                   </HStack>
+                  )}
                 </Flex>
               {/* ) : ( */}
                 {/* <IconButton
