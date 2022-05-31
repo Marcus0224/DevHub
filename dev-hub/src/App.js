@@ -10,7 +10,7 @@ import {
 import Landing from './pages/Landing';
 import { NavBar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import Cart from './/pages/Cart';
+import Cart from './components/Cart';
 import { Login } from './pages/Login';
 import { Catalog } from './pages/Catalog'
 import { SignUp } from './pages/SignUp';

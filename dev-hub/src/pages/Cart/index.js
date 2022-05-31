@@ -7,7 +7,7 @@ import {
     useColorModeValue as mode,
   } from '@chakra-ui/react'
   import React, { useState } from 'react'
-  import { CartItem } from './CartItem'
+  import { CartItem } from '../../components/CartItem'
   import { CartOrderSummary } from './CartOrderSummary'
   import { cartData } from '../../utils/_data'
   import { Link } from 'react-router-dom'
