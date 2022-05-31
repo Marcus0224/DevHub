@@ -7,8 +7,7 @@
     "start": "node server.js",
     "devStart": "nodemon server.js",
     "watch": "nodemon",
-    "seed": "node seeders/seeds.js",
-    "build": "cd dev-hub && npm run build"
+    "seed": "node seeders/seeds.js"
   },
   "keywords": [],
   "author": "",
