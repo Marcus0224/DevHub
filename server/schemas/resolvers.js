@@ -27,8 +27,8 @@ const resolvers = {
         .populate("orders")
     }, 
     
-    orders: async () => {
-      return Order.find().sort({ createdAt: -1 });
+    orders: async (parent, { username }) => {
+      return Order.find({username}).sort({ createdAt: -1 });
     },
 
     order: async (parent, { _id }) => {

@@ -1,5 +1,5 @@
 import { CloseButton, Flex, Link, Select, useColorModeValue } from '@chakra-ui/react'
-import * as React from 'react'
+import React, { useState } from 'react'
 import { PriceTag } from './PriceTag'
 import { CartProductMeta } from './CartProductMeta'
 
@@ -29,7 +29,14 @@ export const CartItem = (props) => {
     price,
     onChangeQuantity,
     onClickDelete,
-  } = props
+  } = props.item;
+
+  const [cartQuantity, setQuantity] = useState(quantity);
+  const updateQuantity = (event) => {
+    const amount = event.target.value;
+    setQuantity(amount);
+    props.updateQuantity(props.item, amount);
+  }
   return (
     <Flex
       direction={{
@@ -55,9 +62,9 @@ export const CartItem = (props) => {
         }}
       >
         <QuantitySelect
-          value={quantity}
+          value={cartQuantity}
           onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value)
+            updateQuantity(e)
           }}
         />
         <PriceTag price={price} currency={currency} />
