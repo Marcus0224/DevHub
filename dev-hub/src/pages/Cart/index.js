@@ -9,11 +9,12 @@ import {
   import React, { useState } from 'react'
   import { CartItem } from './CartItem'
   import { CartOrderSummary } from './CartOrderSummary'
-  import { cartData } from '../../utils/_data'
+  import {cartData} from '../../utils/_data'
   import { Link } from 'react-router-dom'
   
 function Cart () {
-  const [totalPrice, setTotalPrice] = useState(cartData.map(item => item.price*item.quantity).reduce((prev, curr) => prev + curr, 0));
+  const [totalPrice, setTotalPrice] = useState(100000);
+  console.log(cartData())
 
   const updateQuantity = (itemToUpdate, amount) => {
     cartData.map(item => {
@@ -21,7 +22,7 @@ function Cart () {
         return item.quantity = amount;
       }
     });
-    setTotalPrice(cartData.map(item => item.price*item.quantity).reduce((prev, curr) => prev + curr, 0));
+    setTotalPrice(1000);
   }
 
   return (
@@ -63,13 +64,15 @@ function Cart () {
           flex="2"
         >
           <Heading fontSize="2xl" fontWeight="extrabold">
-            Shopping Cart ({cartData.length} items)
+            Shopping Cart {cartData() ? `${cartData.length}` : '0'} items
           </Heading>
   
           <Stack spacing="6">
-            {cartData.map((item) => (
+            {cartData() ? (
+            cartData.map((item) => (
               <CartItem key={item.id} item={item} updateQuantity={updateQuantity} />
-            ))}
+            ))) : <></>
+          }
           </Stack>
         </Stack>
   
