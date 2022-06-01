@@ -17,7 +17,7 @@ import Cart from './/pages/Cart';
 import { Login } from './pages/Login';
 import { Catalog } from './pages/Catalog'
 import { SignUp } from './pages/SignUp';
-import { Checkout } from './pages/Checkout';
+import { Checkout } from './pages/Checkout'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
