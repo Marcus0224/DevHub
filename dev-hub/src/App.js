@@ -3,42 +3,49 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-//import { Logo } from './Logo';
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+} from '@apollo/client';
+
+
+import Landing from './pages/Landing';
+import { NavBar } from './components/Navbar';
+import { Footer } from './components/Footer';
+import Cart from './/pages/Cart';
+import { Login } from './pages/Login';
+import { Catalog } from './pages/Catalog'
+import { SignUp } from './pages/SignUp';
+import { Checkout } from './pages/Checkout'
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
-    <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            {/* <Logo h="40vmin" pointerEvents="none" /> */}
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
-    </ChakraProvider>
+    <ApolloProvider client={client}>
+      <Router>
+        <div>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/login" element={<Login />} />
+            <Route path='/signup' element={<SignUp />} />
+            <Route path='/catalog' element={<Catalog />} />
+            <Route path='/checkout' element={<Checkout />} />
+          </Routes>
+          <Footer />
+        </div>
+      </Router>
+    </ApolloProvider>
   );
 }
 
