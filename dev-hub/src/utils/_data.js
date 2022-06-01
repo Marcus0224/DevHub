@@ -15,3 +15,24 @@ export const addCartData = (data) => {
     localStorage.setItem('cartData', JSON.stringify([data]));
   }
 }
+
+export const deleteCartData = (dataToDelete) => {
+  try {
+    const localData = JSON.parse(localStorage.getItem('cartData'));
+    const filteredData = localData.filter(value => value =! dataToDelete);
+    localStorage.setItem('cartData', JSON.stringify(filteredData));
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
+export const getTotal = () => {
+  try {
+    const localData = JSON.parse(localStorage.getItem('cartData'));
+    return localData.map(item => item.price).reduce((prev, curr) => prev + curr, 0);
+  } catch {
+    return 0;
+  }
+}
