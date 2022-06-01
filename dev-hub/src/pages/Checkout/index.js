@@ -2,7 +2,7 @@ import { Box, Flex, Stack, useBreakpointValue, useColorModeValue } from '@chakra
 import * as React from 'react'
 import { OrderSummary } from './OrderSummary'
 import { PaymentInformation } from './PaymentInformation'
-import { ShippingInformation } from './ShippingInformation.js'
+import { ShippingInformation } from './BillingForm.js'
 
 export const Checkout = () => (
   <Box
