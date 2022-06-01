@@ -11,14 +11,10 @@ import {
   } from '@chakra-ui/react'
   import * as React from 'react'
   import { FiMenu } from 'react-icons/fi'
-<<<<<<< HEAD
-  //import { Logo } from '../Footer/Logo'
-=======
   import { Link } from 'react-router-dom'
   import { Logo } from '../Footer/Logo'
 
   import Auth from '../../utils/auth'
->>>>>>> develop
   
   export const NavBar = () => {
     const isDesktop = useBreakpointValue({
@@ -46,15 +42,9 @@ import {
               lg: '8',
             }}
           >
-<<<<<<< HEAD
-            <HStack spacing="10" justify="space-between">
-              {/* <Logo /> */}
-              {isDesktop ? (
-=======
             <HStack spacing="30" justify="space-around">
               <Logo />
               {/* {isDesktop ? ( */}
->>>>>>> develop
                 <Flex justify="space-between" flex="1">
                   <ButtonGroup variant="link" spacing="8">
                     {['Catalog', 'Cart'].map((item) => (
