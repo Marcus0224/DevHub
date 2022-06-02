@@ -1,6 +1,6 @@
 import { SimpleGrid, Box, Show, Hide } from "@chakra-ui/react"
 import { EcommerceCatalogItem } from "../../components/EcommerceCatalogItem"
-import { SocialCatalogItem } from "../../components/EcommerceCatalogItem/SocialCatalogItem"
+import { SocialCatalogItem } from "../../components/SocialCatalogItem"
 import { FoodCatalogItem } from "../../components/FoodCatalogItem"
 import { NewsCatalogItem } from "../../components/NewsCatalogItem"
 

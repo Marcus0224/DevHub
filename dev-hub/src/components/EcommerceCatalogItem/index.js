@@ -54,7 +54,7 @@ import {
           <Image
             display={{ base: 'none', sm: 'initial' }}
             src="https://i.ibb.co/6ZKHtxD/ecom-Display3.png&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"
-            alt="Lovely Image"
+            alt="Lovely Image of an eccomerce site"
             fallback={<Skeleton />}
             maxH="450px"
             objectFit="cover"

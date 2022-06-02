@@ -44,7 +44,7 @@ import {
         <Flex flex="1" overflow="hidden">
           <Image
             src="https://i.ibb.co/v1FJq11/food-Display1.png&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"
-            alt="Lovely ecommerce site"
+            alt="Lovely food blog site"
             fallback={<Skeleton />}
             maxH="450px"
             minW="300px"
@@ -54,7 +54,7 @@ import {
           <Image
             display={{ base: 'none', sm: 'initial' }}
             src="https://i.ibb.co/Lkxwq6s/food-Display2.png&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"
-            alt="Lovely Image"
+            alt="Lovely Image of food"
             fallback={<Skeleton />}
             maxH="450px"
             objectFit="cover"
