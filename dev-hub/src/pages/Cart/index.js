@@ -22,7 +22,7 @@ function Cart() {
   return (
     <Box
       maxW={{
-        base: '3xl',
+        base: '6xl',
         lg: '7xl',
       }}
       mx="auto"
@@ -36,6 +36,7 @@ function Cart() {
         md: '8',
         lg: '12',
       }}
+      bg = 'RGBA(0, 0, 0, 0.04)'
     >
       <Stack
         direction={{

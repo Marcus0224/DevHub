@@ -78,7 +78,7 @@ export const SignUp = () => {
       maxW="lg"
       py={{
         base: '12',
-        md: '24',
+        md: '12',
       }}
       px={{
         base: '0',
@@ -87,7 +87,7 @@ export const SignUp = () => {
     >
       <Stack spacing="1">
         <Stack spacing="6">
-          <Logo />
+        
           <Stack
             spacing={{
               base: '2',

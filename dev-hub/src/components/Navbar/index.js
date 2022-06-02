@@ -7,7 +7,7 @@ import {
     HStack,
     IconButton,
     useBreakpointValue,
-    useColorModeValue,
+    useColorModeValue, Center
   } from '@chakra-ui/react'
   import * as React from 'react'
   import { FiMenu } from 'react-icons/fi'
@@ -32,17 +32,21 @@ import {
         as="section"
         pb={{
           base: '12',
+          md: '1',
          
         }}
       >
+        <Center>
+
+
         <Box as="nav" bg="bg-surface" boxShadow={useColorModeValue('sm', 'sm-dark')}>
           <Container
             py={{
               base: '4',
-              lg: '8',
+              lg: '0',
             }}
           >
-            <HStack spacing="30" justify="space-around">
+            <HStack spacing="1" justify="space-between">
               <Logo />
               {/* {isDesktop ? ( */}
                 <Flex justify="space-between" flex="1">
@@ -63,7 +67,7 @@ import {
                     </Button>
                   </HStack>
                   ) : (
-                    <HStack spacing="3">
+                    <HStack spacing="2">
                     <Button variant="ghost">
                       <Link to={`/login`}>Sign in</Link>
                     </Button>
@@ -83,6 +87,7 @@ import {
             </HStack>
           </Container>
         </Box>
+        </Center>
       </Box>
     )
   }
