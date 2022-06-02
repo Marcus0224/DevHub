@@ -1,7 +1,7 @@
 # DevHub
 
 ## Deploy link
-[DevHub link](https://whispering-island-67364.herokuapp.com/cart)
+[DevHub link](https://whispering-island-67364.herokuapp.com/cart) :bell:
 
 ## User Story 
 - As A USER
