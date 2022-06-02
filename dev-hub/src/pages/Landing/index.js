@@ -2,9 +2,7 @@ import React from 'react';
 import { Button, Box, Flex, Center, Heading, Icon, Spacer } from '@chakra-ui/react';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import Typewriter from 'typewriter-effect';
-
-import { Test } from '../Test';
+// import Typewriter from 'typewriter-effect';
 
 const Landing = () => {
   return (
@@ -23,14 +21,14 @@ const Landing = () => {
                 <Flex flexWrap="wrap"
             flexDirection="column"
             alignItems="center">
-              See what we can
-              <Typewriter
+              See what we can do...
+              {/* <Typewriter
                 options={{
                   strings: ['create for you...', 'inspire...', 'enhance...', 'DO...'],
                   autoStart: true,
                   loop: true
                 }}
-              />
+              /> */}
               </Flex>
             </Heading>
             <Button p="10" colorScheme="teal" variant="solid" marginTop='20px' marginBottom='50px'>
