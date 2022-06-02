@@ -9,15 +9,15 @@ import {
   import React, { useState } from 'react'
   import { CartItem } from './CartItem'
   import { CartOrderSummary } from './CartOrderSummary'
-  import {cartData, getTotal, deleteCartData} from '../../utils/_data'
+  import { cartData, getTotal, deleteCartData } from '../../utils/_data'
   import { Link } from 'react-router-dom'
   
 function Cart () {
   const [totalPrice, setTotalPrice] = useState(getTotal());
 
   const deleteItem = event => {
-    const itemToDelete = event.target;
-    console.log(itemToDelete);
+    const itemToDelete = event;
+    console.log('Delete this item ' + itemToDelete);
     deleteCartData(itemToDelete);
     setTotalPrice(getTotal());
   }

@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Flex,
   Heading,
   HStack,
@@ -13,8 +12,7 @@ import {
 } from '@chakra-ui/react';
 import * as React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
-import { Navigate, Link } from 'react-router-dom';
-import { SingleProduct } from '../../pages/SingleProduct';
+import { Link } from 'react-router-dom';
 
 export const CatalogItem = () => {
 return (

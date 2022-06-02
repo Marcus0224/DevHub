@@ -22,17 +22,18 @@ import { TertiaryColorPicker } from './TertiaryColorPicker';
 import { SecondaryColorPicker } from './SecondaryColorPicker';
 
 import { addCartData } from '../../utils/_data';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export const SingleProduct = () => {
   const { websiteType } = useParams();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     primaryColor: '',
     secondaryColor: '',
     tertiaryColor: '',
     surpriseMeBox: false,
     comments: '',
-    title: ''
+    title: '',
   });
 
   const handleChange = event => {
@@ -44,13 +45,19 @@ export const SingleProduct = () => {
   };
 
   const handleColorChange = event => {
-    const colorCategorySingleLetter = event.target.parentElement.parentElement.parentElement.textContent.substring(0, 1);
-    const colorCategory = colorCategorySingleLetter === 'P' ? 'primaryColor' : (colorCategorySingleLetter === 'S' ? 'secondaryColor' : 'tertiaryColor');
+    const colorCategorySingleLetter =
+      event.target.parentElement.parentElement.parentElement.textContent.substring(0, 1);
+    const colorCategory =
+      colorCategorySingleLetter === 'P'
+        ? 'primaryColor'
+        : colorCategorySingleLetter === 'S'
+        ? 'secondaryColor'
+        : 'tertiaryColor';
     setFormData({
       ...formData,
-      [colorCategory]: event.target.value
+      [colorCategory]: event.target.value,
     });
-  }
+  };
 
   const colorOptions = [
     {
@@ -86,11 +93,15 @@ export const SingleProduct = () => {
   const handleFormSubmit = () => {
     const dataToSave = {
       websiteType,
-      userInput: formData
+      userInput: formData,
     };
-    addCartData(dataToSave);
-    <Navigate to='/cart' />
-  }
+    if (dataToSave.userInput) {
+      addCartData(dataToSave);
+      navigate('/cart');
+    } else {
+      console.log('no data');
+    }
+  };
 
   return (
     <>
@@ -145,19 +156,13 @@ export const SingleProduct = () => {
                 </Heading>
               </Stack>
               <Stack onChange={handleColorChange}>
-                <PrimaryColorPicker
-                  options={colorOptions}
-                />
+                <PrimaryColorPicker options={colorOptions} />
               </Stack>
               <Stack onChange={handleColorChange}>
-                <SecondaryColorPicker
-                  options={colorOptions}
-                />
+                <SecondaryColorPicker options={colorOptions} />
               </Stack>
               <Stack onChange={handleColorChange}>
-                <TertiaryColorPicker
-                  options={colorOptions}
-                />
+                <TertiaryColorPicker options={colorOptions} />
               </Stack>
               <Stack>
                 <Checkbox
@@ -172,13 +177,18 @@ export const SingleProduct = () => {
                 <Heading size="md" fontWeight="small">
                   Please provide additional information about your website.
                 </Heading>
-        <Heading size="sm" fontWeight="small">
-          Name
-        </Heading>
-        <Input placeholder='ex. "Google"' name='title' value={formData.title} onChange={handleChange} />
-        <Heading size="sm" fontWeight="small">
-          Additional details and what your vision is
-        </Heading>
+                <Heading size="sm" fontWeight="small">
+                  Name
+                </Heading>
+                <Input
+                  placeholder='ex. "Google"'
+                  name="title"
+                  value={formData.title}
+                  onChange={handleChange}
+                />
+                <Heading size="sm" fontWeight="small">
+                  Additional details and what your vision is
+                </Heading>
                 <Textarea
                   placeholder="products, themes, fonts, etc..."
                   name="comments"
