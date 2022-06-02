@@ -8,13 +8,14 @@ import { ColorPickerOption } from '../SingleProduct/ColorPickerOption'
 
 export const CartItem = (props) => {
   const { websiteType } = props.item;
+  const websiteData = websiteTypes.filter(item => item.shortName === websiteType);
   const { 
     name,
     description,
     price,
     currency,
     imageUrl
-  } = websiteTypes[1] // still need to find what website and pass in proper data
+  } = websiteData[0];
 
   const { 
     comments,
@@ -25,7 +26,6 @@ export const CartItem = (props) => {
     title
   } = props.item.userInput;
   const { deleteItem } = {...props};
-  console.log(surpriseMeBox)
 
   return (
     <Flex
@@ -43,7 +43,12 @@ export const CartItem = (props) => {
       />
       <Center width='75%' height='100%' margin='30px' padding='15px' bg='lightgrey' borderRadius='25px'>
         <List spacing={3}>
-          <ListItem><Heading size={'xs'}>Website title:</Heading>{title}</ListItem>
+          <ListItem>
+            <Heading size={'xs'}>
+              Website title:
+            </Heading>
+              {title}
+          </ListItem>
           <ListItem>
             <Heading size={'xs'}>Color scheme chosen:</Heading>
           {surpriseMeBox ? (
@@ -51,15 +56,15 @@ export const CartItem = (props) => {
           ) : (
             <Flex>
             <ColorPickerOption 
-              key={primaryColor}
+              key={`${title}primary${(primaryColor)}`}
               color={primaryColor} 
             />
             <ColorPickerOption 
-              key={secondaryColor}
+              key={`${title}secondary${(primaryColor)}`}
               color={secondaryColor} 
             />
             <ColorPickerOption 
-              key={tertiaryColor}
+              key={`${title}tertiary${(primaryColor)}`}
               color={tertiaryColor} 
             />
             </Flex>
