@@ -49,9 +49,9 @@ export const CartOrderSummary = ({ totalPrice }) => {
       <Stack
         spacing="8"
         borderWidth="1px"
-        rounded="lg"
         padding="8"
         width="full"
+        boxShadow='lg' p='6' rounded='md' bg='white'
       >
         <Heading size="md">Order Summary</Heading>
 

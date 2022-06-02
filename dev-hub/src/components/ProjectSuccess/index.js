@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export const ProjectSuccess = () => {
     return (
         <Center>
-        <Box>
+        <Box mt={155} mb={175}>
             <Heading>Thank you!</Heading>
             <Flex> 
             Your order will be looked at by our team. Please visit your .<Link to='/dashboard'><LinkText color='blue'>dashboard</LinkText></Link>. for updates.

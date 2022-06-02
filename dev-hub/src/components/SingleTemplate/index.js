@@ -22,7 +22,7 @@ import {
       } = website;
   
   return (
-    <Box key={shortName} maxW="7xl" mx="auto" px={{ base: '0', lg: '12' }} py={{ base: '0', lg: '12' }}>
+    <Box key={shortName} maxW="5xl" mx="auto" px={{ base: '0', lg: '12' }} py={{ base: '0', lg: '12' } } bg ='red.50' borderRadius='lg' overflow='hidden'  boxShadow='md' p='6' rounded='md' >
       <Stack direction={{ base: 'column-reverse', lg: 'row' }} spacing={{ base: '0', lg: '20' }}>
         <Box
           width={{ lg: 'sm' }}
