@@ -1,31 +1,41 @@
-import { Center, CloseButton, Flex, Heading, Link, List, ListItem } from '@chakra-ui/react'
-import React from 'react'
-import { PriceTag } from './PriceTag'
-import { CartProductMeta } from './CartProductMeta'
+import {
+  Center,
+  CloseButton,
+  Flex,
+  Heading,
+  Link,
+  List,
+  ListItem,
+} from '@chakra-ui/react';
+import React from 'react';
+import { PriceTag } from './PriceTag';
+import { CartProductMeta } from './CartProductMeta';
 
-import { websiteTypes } from '../../utils/_data'
-import { ColorPickerOption } from '../SingleProduct/ColorPickerOption'
+import { websiteTypes } from '../../utils/_data';
+import { ColorPickerOption } from '../SingleProduct/ColorPickerOption';
 
-export const CartItem = (props) => {
+import { deleteCartData } from '../../utils/_data';
+
+export const CartItem = props => {
   const { websiteType } = props.item;
-  const websiteData = websiteTypes.filter(item => item.shortName === websiteType);
-  const { 
-    name,
-    description,
-    price,
-    currency,
-    imageUrl
-  } = websiteData[0];
+  const websiteData = websiteTypes.filter(
+    item => item.shortName === websiteType
+  );
+  const { name, description, price, currency, imageUrl } = websiteData[0];
 
-  const { 
+  const {
     comments,
     primaryColor,
     secondaryColor,
     tertiaryColor,
     surpriseMeBox,
-    title
+    title,
   } = props.item.userInput;
-  const { deleteItem } = {...props};
+
+  const deleteItem = () => {
+    deleteCartData(props.index);
+    props.deleteItem();
+  };
 
   return (
     <Flex
@@ -36,45 +46,46 @@ export const CartItem = (props) => {
       justify="space-between"
       align="center"
     >
-      <CartProductMeta
-        name={name}
-        description={description}
-        image={imageUrl}
-      />
-      <Center width='75%' height='100%' margin='30px' padding='15px' bg='lightgrey' borderRadius='25px'>
+      <CartProductMeta name={name} description={description} image={imageUrl} />
+      <Center
+        width="75%"
+        height="100%"
+        margin="30px"
+        padding="15px"
+        bg="lightgrey"
+        borderRadius="25px"
+      >
         <List spacing={3}>
           <ListItem>
-            <Heading size={'xs'}>
-              Website title:
-            </Heading>
-              {title}
+            <Heading size={'xs'}>Website title:</Heading>
+            {title}
           </ListItem>
           <ListItem>
             <Heading size={'xs'}>Color scheme chosen:</Heading>
-          {surpriseMeBox ? (
-            ('We will choose the color scheme for you')
-          ) : (
-            <Flex>
-            <ColorPickerOption 
-              key={`${title}primary${(primaryColor)}`}
-              color={primaryColor} 
-            />
-            <ColorPickerOption 
-              key={`${title}secondary${(primaryColor)}`}
-              color={secondaryColor} 
-            />
-            <ColorPickerOption 
-              key={`${title}tertiary${(primaryColor)}`}
-              color={tertiaryColor} 
-            />
-            </Flex>
-          )}
+            {surpriseMeBox ? (
+              'We will choose the color scheme for you'
+            ) : (
+              <Flex>
+                <ColorPickerOption
+                  key={`${title}primary${primaryColor}`}
+                  color={primaryColor}
+                />
+                <ColorPickerOption
+                  key={`${title}secondary${primaryColor}`}
+                  color={secondaryColor}
+                />
+                <ColorPickerOption
+                  key={`${title}tertiary${primaryColor}`}
+                  color={tertiaryColor}
+                />
+              </Flex>
+            )}
           </ListItem>
           <ListItem>
-          <Heading size={'xs'}>Comments made for the team:</Heading> 
-            {comments.length !== 0 ? <p>{comments}</p> : ('No comments made.')}
+            <Heading size={'xs'}>Comments made for the team:</Heading>
+            {comments.length !== 0 ? <p>{comments}</p> : 'No comments made.'}
           </ListItem>
-      </List>
+        </List>
       </Center>
 
       {/* Desktop */}
@@ -86,7 +97,10 @@ export const CartItem = (props) => {
         }}
       >
         <PriceTag price={price} currency={currency} />
-        <CloseButton aria-label={`Delete ${name} from cart`} onClick={deleteItem} />
+        <CloseButton
+          aria-label={`Delete ${name} from cart`}
+          onClick={deleteItem}
+        />
       </Flex>
 
       {/* Mobile */}
@@ -106,5 +120,5 @@ export const CartItem = (props) => {
         <PriceTag price={price} currency={currency} />
       </Flex>
     </Flex>
-  )
-}
+  );
+};

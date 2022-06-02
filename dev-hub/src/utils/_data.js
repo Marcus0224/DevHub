@@ -16,12 +16,11 @@ export const addCartData = (data) => {
   }
 }
 
-export const deleteCartData = (dataToDelete) => {
+export const deleteCartData = (index) => {
   try {
     const localData = JSON.parse(localStorage.getItem('cartData'));
-    const filteredData = localData.filter(value => value === dataToDelete);
-    console.log(dataToDelete, localData, filteredData);
-    localStorage.setItem('cartData', JSON.stringify(filteredData));
+    localData.splice(index, 1);
+    localStorage.setItem('cartData', JSON.stringify(localData));
     return true;
   } catch (error) {
     console.error(error);
