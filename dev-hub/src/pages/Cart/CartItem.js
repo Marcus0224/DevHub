@@ -1,42 +1,42 @@
-import { CloseButton, Flex, Link, Select, useColorModeValue } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import { PriceTag } from './PriceTag'
-import { CartProductMeta } from './CartProductMeta'
+import {
+  Center,
+  CloseButton,
+  Flex,
+  Heading,
+  Link,
+  List,
+  ListItem,
+} from '@chakra-ui/react';
+import React from 'react';
+import { PriceTag } from './PriceTag';
+import { CartProductMeta } from './CartProductMeta';
 
-const QuantitySelect = (props) => {
-  return (
-    <Select
-      maxW="64px"
-      aria-label="Select quantity"
-      focusBorderColor={useColorModeValue('blue.500', 'blue.200')}
-      {...props}
-    >
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </Select>
-  )
-}
+import { websiteTypes } from '../../utils/_data';
+import { ColorPickerOption } from '../SingleProduct/ColorPickerOption';
 
-export const CartItem = (props) => {
+import { deleteCartData } from '../../utils/_data';
+
+export const CartItem = props => {
+  const { websiteType } = props.item;
+  const websiteData = websiteTypes.filter(
+    item => item.shortName === websiteType
+  );
+  const { name, description, price, currency, imageUrl } = websiteData[0];
+
   const {
-    name,
-    description,
-    quantity,
-    imageUrl,
-    currency,
-    price,
-    onChangeQuantity,
-    onClickDelete,
-  } = props.item;
+    comments,
+    primaryColor,
+    secondaryColor,
+    tertiaryColor,
+    surpriseMeBox,
+    title,
+  } = props.item.userInput;
 
-  const [cartQuantity, setQuantity] = useState(quantity);
-  const updateQuantity = (event) => {
-    const amount = event.target.value;
-    setQuantity(amount);
-    props.updateQuantity(props.item, amount);
-  }
+  const deleteItem = () => {
+    deleteCartData(props.index);
+    props.deleteItem();
+  };
+
   return (
     <Flex
       direction={{
@@ -46,29 +46,61 @@ export const CartItem = (props) => {
       justify="space-between"
       align="center"
     >
-      <CartProductMeta
-        name={name}
-        description={description}
-        image={imageUrl}
-      />
+      <CartProductMeta name={name} description={description} image={imageUrl} />
+      <Center
+        width="75%"
+        height="100%"
+        margin="30px"
+        padding="15px"
+        bg="lightgrey"
+        borderRadius="25px"
+      >
+        <List spacing={3}>
+          <ListItem>
+            <Heading size={'xs'}>Website title:</Heading>
+            {title}
+          </ListItem>
+          <ListItem>
+            <Heading size={'xs'}>Color scheme chosen:</Heading>
+            {surpriseMeBox ? (
+              'We will choose the color scheme for you'
+            ) : (
+              <Flex>
+                <ColorPickerOption
+                  key={`${title}primary${primaryColor}`}
+                  color={primaryColor}
+                />
+                <ColorPickerOption
+                  key={`${title}secondary${primaryColor}`}
+                  color={secondaryColor}
+                />
+                <ColorPickerOption
+                  key={`${title}tertiary${primaryColor}`}
+                  color={tertiaryColor}
+                />
+              </Flex>
+            )}
+          </ListItem>
+          <ListItem>
+            <Heading size={'xs'}>Comments made for the team:</Heading>
+            {comments.length !== 0 ? <p>{comments}</p> : 'No comments made.'}
+          </ListItem>
+        </List>
+      </Center>
 
       {/* Desktop */}
       <Flex
-        width="full"
-        justify="space-between"
+        justify="end"
         display={{
           base: 'none',
           md: 'flex',
         }}
       >
-        <QuantitySelect
-          value={cartQuantity}
-          onChange={(e) => {
-            updateQuantity(e)
-          }}
-        />
         <PriceTag price={price} currency={currency} />
-        <CloseButton aria-label={`Delete ${name} from cart`} onClick={onClickDelete} />
+        <CloseButton
+          aria-label={`Delete ${name} from cart`}
+          onClick={deleteItem}
+        />
       </Flex>
 
       {/* Mobile */}
@@ -85,14 +117,8 @@ export const CartItem = (props) => {
         <Link fontSize="sm" textDecor="underline">
           Delete
         </Link>
-        <QuantitySelect
-          value={quantity}
-          onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value)
-          }}
-        />
         <PriceTag price={price} currency={currency} />
       </Flex>
     </Flex>
-  )
-}
+  );
+};

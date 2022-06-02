@@ -1,28 +1,23 @@
 import {
-    Box,
-    Flex,
-    Heading,
-    HStack,
-    Stack,
-    useColorModeValue as mode,
-  } from '@chakra-ui/react'
-  import React, { useState } from 'react'
-  import { CartItem } from './CartItem'
-  import { CartOrderSummary } from './CartOrderSummary'
-  import { cartData } from '../../utils/_data'
-  import { Link } from 'react-router-dom'
-  
-function Cart () {
-  const [totalPrice, setTotalPrice] = useState(cartData.map(item => item.price*item.quantity).reduce((prev, curr) => prev + curr, 0));
+  Box,
+  Flex,
+  Heading,
+  HStack,
+  Stack,
+  useColorModeValue as mode,
+} from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { CartItem } from './CartItem';
+import { CartOrderSummary } from './CartOrderSummary';
+import { cartData, getTotal } from '../../utils/_data';
+import { Link } from 'react-router-dom';
 
-  const updateQuantity = (itemToUpdate, amount) => {
-    cartData.map(item => {
-      if (item === itemToUpdate) {
-        return item.quantity = amount;
-      }
-    });
-    setTotalPrice(cartData.map(item => item.price*item.quantity).reduce((prev, curr) => prev + curr, 0));
-  }
+function Cart() {
+  const [totalPrice, setTotalPrice] = useState(getTotal());
+
+  const deleteItem = event => {
+    setTotalPrice(getTotal());
+  };
 
   return (
     <Box
@@ -63,26 +58,38 @@ function Cart () {
           flex="2"
         >
           <Heading fontSize="2xl" fontWeight="extrabold">
-            Shopping Cart ({cartData.length} items)
+            Shopping Cart {cartData() ? `${cartData().length}` : '0'} item
+            {cartData().length === 1 ? '' : 's'}
           </Heading>
-  
+
           <Stack spacing="6">
-            {cartData.map((item) => (
-              <CartItem key={item.id} item={item} updateQuantity={updateQuantity} />
-            ))}
+            {cartData() ? (
+              cartData().map((item, index) => (
+                <CartItem
+                  key={item.id}
+                  item={item}
+                  index={index}
+                  deleteItem={deleteItem}
+                />
+              ))
+            ) : (
+              <></>
+            )}
           </Stack>
         </Stack>
-  
+
         <Flex direction="column" align="center" flex="1">
-          <CartOrderSummary totalPrice={totalPrice}/>
+          <CartOrderSummary totalPrice={totalPrice} />
           <HStack mt="6" fontWeight="semibold">
             <p>or</p>
-            <Link color={mode('blue.500', 'blue.200')} to='/catalog'>Continue shopping</Link>
+            <Link color={mode('blue.500', 'blue.200')} to="/catalog">
+              Continue shopping
+            </Link>
           </HStack>
         </Flex>
       </Stack>
     </Box>
-  )
+  );
 }
 
 export default Cart;
