@@ -43,7 +43,7 @@ export const SingleProduct = () => {
     tertiaryColor: '',
     surpriseMeBox: false,
     comments: '',
-    title: '',
+    title: ''
   });
 
   const handleChange = event => {
@@ -103,6 +103,7 @@ export const SingleProduct = () => {
   const handleFormSubmit = () => {
     const dataToSave = {
       websiteType,
+      price,
       userInput: formData,
     };
     if (dataToSave.userInput) {

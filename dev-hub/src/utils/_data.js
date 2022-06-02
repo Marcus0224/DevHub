@@ -33,7 +33,8 @@ export const getTotal = () => {
   try {
     const localData = JSON.parse(localStorage.getItem('cartData'));
     return localData.map(item => item.price).reduce((prev, curr) => prev + curr, 0);
-  } catch {
+  } catch (error) {
+    console.log(error);
     return 0;
   }
 }
