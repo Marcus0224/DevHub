@@ -12,7 +12,7 @@ import {
     useBreakpointValue,
     useColorModeValue,
     Text,
-    Center
+    Center,
   } from '@chakra-ui/react'
   import React, { useState } from 'react'
   import { Logo } from './Logo'
@@ -52,6 +52,24 @@ export const SignUp = () => {
   };
 
   const handleErrorMessage = (error) => {
+    let missingSlots = [];
+    let alreadyInUse = []
+    if (error.message.includes("`email` is required")) {
+      missingSlots.push('Email is required');
+    }
+    if (error.message.includes("`username` is required")) {
+      missingSlots.push('Username is required');
+    }
+    if (error.message.includes("`password` is required")) {
+      missingSlots.push('Password is required');
+    }
+    if (error.message.includes("duplicate", "username")) {
+      alreadyInUse.push('Username is already in use');
+    }
+    if (error.message.includes("duplicate", "email")) {
+      alreadyInUse.push('Email is already in use');
+    }
+    return missingSlots.join(', ') + ' ' + alreadyInUse.join(', ');
 
   }
 
@@ -122,7 +140,7 @@ export const SignUp = () => {
               p='10px'
               borderRadius='25px'
               marginBottom='5px'>
-              {error.message}
+              Sign up failed: {handleErrorMessage(error)}
             </Center>
           )}
           <Stack spacing="6">
