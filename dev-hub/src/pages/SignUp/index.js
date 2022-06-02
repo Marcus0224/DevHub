@@ -13,8 +13,6 @@ import {
     useColorModeValue,
     Text,
     Center,
-    List,
-    ListItem
   } from '@chakra-ui/react'
   import React, { useState } from 'react'
   import { Logo } from './Logo'
