@@ -46,9 +46,9 @@ export const DashBoard = () => {
   }
   if (!Auth.loggedIn()) {
     return (
-      <h4>
+      <Heading fontWeight='medium' m='5%'>
         You need to be logged in to see this page. Use the navigation links above to sign up or log in!
-      </h4>
+      </Heading>
     );
   }
 

@@ -1,176 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-    Box,
     Button,
     Center,
-    VStack,
-    keyframes,
+    Flex,
   } from "@chakra-ui/react";
-import { GiCaesar } from "react-icons/gi";
-import { ScaleFade } from '@chakra-ui/react';
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 import { motion } from 'framer-motion';
 
-const spin = keyframes`
-  from {transform: rotate(0deg)}
-  to {transform: rotate(360deg)}
-`;
-
-const draw = {
-    hidden: { pathLength: 0, opacity: 0 },
-    visible: (i) => {
-      const delay = 1 + i * 0.5;
-      return {
-        pathLength: 1,
-        opacity: 1,
-        transition: {
-          pathLength: { delay, type: "spring", duration: 1.5, bounce: 0 },
-          opacity: { delay, duration: 0.01 }
-        }
-      };
-    }
-  };
-
 export const Test = () => {
-    const spinAnimation = `${spin} infinite 60s linear`;
-    return (
-        <>
-        <Center 
-            height='100px'
-            width='500px'
-            border='1px solid red'>
-      <motion.div
-        animate={{ x: '90%', y: '90%', scale: 2, rotate: '315deg' }} 
-        transition={{ delay: 1 }}>
-          <h1>This is rotating</h1>
-      </motion.div>
-      </Center>
-      <Center>
-      <ScaleFade
-              key={'button'}
-              initialScale={20}
-              in='true'
-              out='true'>
-                  <Button>Hi</Button>
-                  </ScaleFade>
-      </Center>
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [likes, setLikes] = useState(35);
 
-      <motion.svg
-      width="600"
-      height="600"
-      viewBox="0 0 600 600"
-      initial="hidden"
-      animate="visible"
-    >
-      <motion.circle
-        cx="100"
-        cy="100"
-        r="80"
-        stroke="#ff0055"
-        variants={draw}
-        custom={1}
-      />
-      <motion.line
-        x1="220"
-        y1="30"
-        x2="360"
-        y2="170"
-        stroke="#00cc88"
-        variants={draw}
-        custom={2}
-      />
-      <motion.line
-        x1="220"
-        y1="170"
-        x2="360"
-        y2="30"
-        stroke="#00cc88"
-        variants={draw}
-        custom={2.5}
-      />
-      <motion.rect
-        width="140"
-        height="140"
-        x="410"
-        y="30"
-        rx="20"
-        stroke="#0099ff"
-        variants={draw}
-        custom={3}
-      />
-      <motion.circle
-        cx="100"
-        cy="300"
-        r="80"
-        stroke="#0099ff"
-        variants={draw}
-        custom={2}
-      />
-      <motion.line
-        x1="220"
-        y1="230"
-        x2="360"
-        y2="370"
-        stroke="#ff0055"
-        custom={3}
-        variants={draw}
-      />
-      <motion.line
-        x1="220"
-        y1="370"
-        x2="360"
-        y2="230"
-        stroke="#ff0055"
-        custom={3.5}
-        variants={draw}
-      />
-      <motion.rect
-        width="140"
-        height="140"
-        x="410"
-        y="230"
-        rx="20"
-        stroke="#00cc88"
-        custom={4}
-        variants={draw}
-      />
-      <motion.circle
-        cx="100"
-        cy="500"
-        r="80"
-        stroke="#00cc88"
-        variants={draw}
-        custom={3}
-      />
-      <motion.line
-        x1="220"
-        y1="430"
-        x2="360"
-        y2="570"
-        stroke="#0099ff"
-        variants={draw}
-        custom={4}
-      />
-      <motion.line
-        x1="220"
-        y1="570"
-        x2="360"
-        y2="430"
-        stroke="#0099ff"
-        variants={draw}
-        custom={4.5}
-      />
-      <motion.rect
-        width="140"
-        height="140"
-        x="410"
-        y="430"
-        rx="20"
-        stroke="#ff0055"
-        variants={draw}
-        custom={5}
-      />
-    </motion.svg>
-      </>
+
+    return (
+        <Flex padding={10} wrap='wrap'>
+          <Button
+            as={motion.button}
+            m='5'
+            animate={{ 
+              scale: isAnimating ? 2 : 1,
+              backgroundColor: isAnimating ? 'lightblue' : 'lightgrey',
+            }}
+            transition={{ ease: 'easeIn', duration: 1 }}
+            onClick={() => setIsAnimating(!isAnimating)}
+            >
+              Blow me up
+          </Button>
+
+          <Center
+            as={motion.div}
+            m='5'
+            backgroundColor='#adbc92d3'
+            width='150px'
+            height='150px'
+            borderRadius='50%'
+            drag
+            dragConstraints={{
+              right: 20,
+              left: -5,
+              top: 10,
+              bottom: -5
+            }}
+            whileTap={{
+              scale: 1.25
+            }}
+            >
+              Move me around
+          </Center>
+
+          <Button
+            as={motion.button}
+            m='5'
+            animate={{
+              backgroundColor: likes === 36 ? 'lightpink' : 'lightgrey',
+            }}
+            transition={{ ease: 'easeIn', duration: 1 }}
+            onClick={() => setLikes(36)}
+            >
+              {likes === 36 ? (
+                <>
+                  Liked ({likes})  <AiFillHeart />
+                </>
+                ) : (
+                <>
+                  Like ({likes})  <AiOutlineHeart />
+                </>
+                )}
+          </Button>
+        </Flex>
     );
 }
