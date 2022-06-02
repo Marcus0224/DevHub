@@ -23,9 +23,19 @@ import { SecondaryColorPicker } from './SecondaryColorPicker';
 
 import { addCartData } from '../../utils/_data';
 import { useNavigate, useParams } from 'react-router-dom';
+import { websiteTypes } from '../../utils/_data';
 
 export const SingleProduct = () => {
   const { websiteType } = useParams();
+  const websiteData = websiteTypes.filter(item => item.shortName === websiteType);
+  const { 
+    name,
+    description,
+    price,
+    currency,
+    imageUrl
+  } = websiteData[0];
+  
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     primaryColor: '',
@@ -131,22 +141,20 @@ export const SingleProduct = () => {
               <Stack spacing="4">
                 <Stack>
                   <Heading size="lg" fontWeight="medium">
-                    Ecommerce Site
+                    {name}
                   </Heading>
                 </Stack>
                 <Stack spacing="1">
                   <PriceTag
-                    price={50000}
-                    currency="USD"
+                    price={price}
+                    currency={currency}
                     rootProps={{
                       fontSize: 'xl',
                     }}
                   />
                 </Stack>
                 <Text color={useColorModeValue('gray.600', 'gray.400')}>
-                  With a sleek design and a captivating essence, we'll build an
-                  ecommerce site that will have your customers coming back for
-                  more.
+                  {description}
                 </Text>
               </Stack>
               <Stack></Stack>
@@ -214,15 +222,15 @@ export const SingleProduct = () => {
             <Stack spacing="8">
               <AspectRatio ratio={4 / 3}>
                 <Image
-                  src="https://i.ibb.co/6ZKHtxD/ecom-Display3.png&ixlib=rb-1.2.1&auto=format&fit=crop&w=680&q=80"
-                  alt="Ecommerce site example 1"
+                  src={imageUrl}
+                  alt="Site example 1"
                   fallback={<Skeleton />}
                 />
               </AspectRatio>
               <AspectRatio ratio={4 / 3}>
                 <Image
-                  src="https://i.ibb.co/GtJ0wL3/ecom-Display2.png&ixlib=rb-1.2.1&auto=format&fit=crop&w=680&q=80"
-                  alt="Ecommerce site example 2"
+                  src={imageUrl}
+                  alt="Site example 2"
                   fallback={<Skeleton />}
                 />
               </AspectRatio>
