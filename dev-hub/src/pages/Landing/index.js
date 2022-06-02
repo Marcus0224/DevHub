@@ -4,8 +4,6 @@ import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
 
-import { Test } from '../Test';
-
 const Landing = () => {
   return (
     <section>

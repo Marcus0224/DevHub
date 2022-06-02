@@ -25,15 +25,14 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_ORDER = gql`
-    mutation addOrder($orderType: String!, $orderTitle: String!, $needByDate: String!, $price: String!, $comments: String!, $username: String!) {
-        addOrder(orderType: $orderType, orderTitle: $orderTitle, needByDate: $needByDate, price: $price, comments: $comments, username: $username) {
-            _id: ID
+    mutation addOrder($orderType: String!, $orderTitle: String!, $needByDate: String!, $price: String!, $comments: String!) {
+        addOrder(orderType: $orderType, orderTitle: $orderTitle, needByDate: $needByDate, price: $price, comments: $comments) {
+            _id
             orderType
             orderTitle
             needByDate
             price
             comments
-            username
         }
     }
 `;

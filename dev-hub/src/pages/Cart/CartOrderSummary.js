@@ -18,9 +18,11 @@ import {
 import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { formatPrice } from './PriceTag';
-import { deleteCartData } from '../../utils/_data';
 import auth from '../../utils/auth';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { cartData, deleteAllCartData } from '../../utils/_data';
+import { useMutation } from "@apollo/client";
+import { ADD_ORDER } from '../../utils/mutations';
 
 const OrderSummaryItem = props => {
   const { label, value, children } = props;
@@ -37,11 +39,36 @@ const OrderSummaryItem = props => {
 export const CartOrderSummary = ({ totalPrice }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const handleSubmit = () => {
-    // send localstorage to database
-    // clear localstorage
-    // go to success page
-    <Navigate to='/success' />;
+    const [addOrder, { error }] = useMutation(ADD_ORDER);
+
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      cartData().forEach(async item => {
+    const {
+      websiteType,
+      price,
+    } = item;
+    const {
+      comments,
+      title
+    } = item.userInput;
+
+    try {
+      // add to database
+      await addOrder({
+        variables: { 
+            orderType: websiteType,
+            orderTitle: title,
+            needByDate: '12/31/1999',
+            price: price,
+            comments: comments,
+         },
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  });
+  deleteAllCartData();
   }
 
   return (
@@ -116,7 +143,7 @@ export const CartOrderSummary = ({ totalPrice }) => {
             </ModalBody>
 
             <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
+              <Button colorScheme="blue" mr={3} onClick={handleSubmit}>
                 <Link to='/success'>Yes, send the info</Link>
               </Button>
               <Button variant="ghost" onClick={onClose}>

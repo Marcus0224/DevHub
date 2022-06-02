@@ -2,8 +2,9 @@ import { Box, Container, SimpleGrid, Tabs, TabList, TabPanels, Tab, TabPanel, Ce
 import * as React from 'react';
 import { Info } from './DashInfo';
 import { useQuery } from '@apollo/client';
-import { QUERY_ME, QUERY_ORDERS, QUERY_USER } from '../../utils/queries';
+import { QUERY_ORDERS } from '../../utils/queries';
 import Auth from '../../utils/auth';
+import { useParams } from 'react-router-dom';
 
 const pastInfos = [
   {
@@ -36,9 +37,12 @@ const activeInfos = [
 ]
 
 export const DashBoard = () => {
-  const { loading, data } = useQuery(QUERY_ME);
+  const { "username": userParam } = useParams();
+  const { loading, data } = useQuery(QUERY_ORDERS, {
+    variables: { username: userParam }
+  });
 
-  const orders = data?.orders || {};
+  console.log(data, userParam);
   if (loading) {
     return <div>Loading...</div>;
   }

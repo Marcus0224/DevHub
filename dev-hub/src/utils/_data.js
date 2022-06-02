@@ -28,6 +28,16 @@ export const deleteCartData = (index) => {
   }
 }
 
+export const deleteAllCartData = () => {
+  try {
+    localStorage.setItem('cartData', JSON.stringify([]));
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
 export const getTotal = () => {
   try {
     const localData = JSON.parse(localStorage.getItem('cartData'));

@@ -16,7 +16,6 @@ import Cart from './/pages/Cart';
 import { Login } from './pages/Login';
 import { Catalog } from './pages/Catalog';
 import { SignUp } from './pages/SignUp';
-import { Checkout } from './pages/Checkout';
 import { Test } from './pages/Test';
 import { SingleProduct } from './pages/SingleProduct';
 import { DashBoard } from './pages/DashBoard.js';
@@ -54,9 +53,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/catalog" element={<Catalog />} />
-            <Route path="/checkout" element={<Checkout />} />
             <Route path="/single/:websiteType" element={<SingleProduct />} />
-            <Route path='/dashboard' element={<DashBoard />} />
+            <Route path='/dashboard/:username' element={<DashBoard />} />
             <Route path="/test" element={<Test />} />
           </Routes>
           <Footer />
