@@ -1,7 +1,7 @@
 # DevHub
 
 ## Deploy link
-[DevHub link] (https://whispering-island-67364.herokuapp.com/cart)
+[DevHub link](https://whispering-island-67364.herokuapp.com/cart)
 
 ## User Story 
 - As A USER
@@ -13,7 +13,7 @@ An app  giving users a way to choose and design there ecommerce, landing page, p
 
 ## Screenshot
 ![](catalog.png)
-![](chart .png)
+![](chart.png)
 
 ## Installations
 - Performant JavaScript
