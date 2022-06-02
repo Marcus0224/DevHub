@@ -25,11 +25,11 @@ An app  giving users a way to choose and design there ecommerce, landing page, p
 
 
 ## Contributors
-- @Gsimon5841
-- @Diego Restrepo
-- @Matt Pityo
-- @Johnny Williams
-- @Marc St louis 
+- Georges Simon
+- Diego Restrepo
+- Matt Pityo
+- Johnny Williams
+ - Marc St louis
 
 ##
 ©️2022 DevHub Inc :technologist:
