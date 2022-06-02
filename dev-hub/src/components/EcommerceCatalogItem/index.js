@@ -13,7 +13,7 @@ import {
   import * as React from 'react'
   import { FaArrowRight } from 'react-icons/fa'
   
-  export const CatalogItem = () => (
+  export const EcommerceCatalogItem = () => (
     <Box maxW="7xl" mx="auto" px={{ base: '0', lg: '12' }} py={{ base: '0', lg: '12' }}>
       <Stack direction={{ base: 'column-reverse', lg: 'row' }} spacing={{ base: '0', lg: '20' }}>
         <Box
