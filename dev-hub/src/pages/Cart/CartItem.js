@@ -6,8 +6,9 @@ import {
   Link,
   List,
   ListItem,
+  Input
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { PriceTag } from './PriceTag';
 import { CartProductMeta } from './CartProductMeta';
 
